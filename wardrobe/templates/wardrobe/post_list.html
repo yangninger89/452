@@ -1,29 +1,39 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 
     <head>
         <title>My Wardrobe</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/wardrobe.css' %}">
     </head>
 
     <body>
-        <div>
+        <div class="page-header">
             <h1><a href="/">My Wardrobe</a></h1>
         </div>
 
-        <div>
-            <p>published: 28.11.2017, 10:05</p>
-            <h2><a href="">first piece of clothes</a></h2>
-            <p>Bloggers have gone from front-row novelty to marketing sideline to venues for big-budget advertising over the past decade, and are now making seven figures in the process.</p>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% for post in posts %}
+                        <div class="post">
+                            <div class="date">
+                                <p>Published: {{ post.published_date }}</p>
+                            </div>
+                            <h1><a href="">{{ post.type }}</a></h1>
+                            <p>{{ post.description|linebreaksbr }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
 
-        <div>
-            <p>published: 28.11.2017, 10:05</p>
-            <h2><a href="">My second post</a></h2>
-            <p>Bloggers have gone from front-row novelty to marketing sideline to venues for big-budget advertising over the past decade, and are now making seven figures in the process.</p>
-        </div>
     </body>
 
-
-
 </html>
+
