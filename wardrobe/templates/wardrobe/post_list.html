@@ -1,39 +1,13 @@
-{% load staticfiles %}
+{% extends 'wardrobe/base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-
-
-    <head>
-        <title>My Wardrobe</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="{% static 'css/wardrobe.css' %}">
-    </head>
-
-    <body>
-        <div class="page-header">
-            <h1><a href="/">My Wardrobe</a></h1>
-        </div>
-
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                    {% for post in posts %}
-                        <div class="post">
-                            <div class="date">
-                                <p>Published: {{ post.published_date }}</p>
-                            </div>
-                            <h1><a href="">{{ post.type }}</a></h1>
-                            <p>{{ post.description|linebreaksbr }}</p>
-                        </div>
-                    {% endfor %}
-                </div>
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                <p>Published: {{ post.published_date }}</p>
             </div>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.type }}</a></h1>
+            <p>{{ post.description|linebreaksbr }}</p>
         </div>
-
-    </body>
-
-</html>
-
+    {% endfor %}
+{% endblock %}
