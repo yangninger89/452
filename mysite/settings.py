@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'wardrobe'
+    'wardrobe'   # telling Django that I have created an application named wardrobe and it should use it
 ]
 
 MIDDLEWARE = [

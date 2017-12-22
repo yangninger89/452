@@ -3,7 +3,7 @@ from django.utils import timezone
 
 
 
-class Post(models.Model):
+class Post(models.Model):  # I decided to define each clothes (every post) object by specifying owner, type, description, created_date, and published_date
     owner = models.ForeignKey('auth.User')
     type = models.CharField(max_length=200)
     description = models.TextField()
